@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pushpa Cast</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1a1a2e, #16213e);
+      color: #fff;
+      min-height: 100vh;
+      padding-top: 80px; /* space for navbar */
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .nav-left {
+      flex: 1;
+    }
+
+    .nav-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .nav-title img {
+      height: 40px;
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    .nav-title h1 {
+      font-size: 1.8rem;
+      color: #FFD700;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      list-style: none;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #FFD700;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #ffd700;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .cast-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    .cast-card {
+      background: #222;
+      padding: 20px;
+      border-radius: 20px;
+      width: 220px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .cast-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+    }
+
+    .cast-card img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 4px solid #ffd700;
+    }
+
+    .cast-card h3 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .cast-card p {
+      font-size: 16px;
+      color: #bbb;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: #1e1e2f;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      color: #fff;
+      box-shadow: 0 0 30px #000;
+      position: relative;
+      text-align: left;
+    }
+
+    .modal-content h2 {
+      color: #ffd700;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .nav-title h1 {
+        font-size: 1.4rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .cast-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar like awards.html -->
+  <nav class="navbar">
+    <div class="nav-left"></div>
+
+    <div class="nav-title">
+      <img src="Screenshot 2025-06-12 094740.png" alt="Pushpa Icon" />
+      <h1>Pushpa Universe</h1>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="video.html">Videos</a></li>
+      <li><a href="photo.html">Photos</a></li>
+      <li><a href="awards.html">Awards</a></li>
+      <li><a href="cast.html">Cast</a></li>
+      <li><a href="collection.html">Achievements</a></li>
+    </ul>
+  </nav>
+
+  <!-- Cast Section -->
+  <h1>Main Cast & Crew</h1>
+  <div class="cast-grid">
+    <div class="cast-card" onclick="openModal('Allu Arjun')">
+      <img src="AA.jpeg" alt="Allu Arjun">
+      <h3>Allu Arjun</h3>
+      <p>as Pushpa Raj</p>
+    </div>
+    <div class="cast-card" onclick="openModal('Rashmika Mandanna')">
+      <img src="rashi.jpg" alt="Rashmika Mandanna">
+      <h3>Rashmika Mandanna</h3>
+      <p>as Srivalli</p>
+    </div>
+    <div class="cast-card" onclick="openModal('Fahadh Faasil')">
+      <img src="fahad.jpg" alt="Fahadh Faasil">
+      <h3>Fahadh Faasil</h3>
+      <p>as Bhanwar Singh</p>
+    </div>
+    <div class="cast-card" onclick="openModal('Sukumar')">
+      <img src="sukuma.png" alt="Sukumar">
+      <h3>Sukumar</h3>
+      <p>Director</p>
+    </div>
+    <div class="cast-card" onclick="openModal('Jagadeesh')">
+      <img src="jagadesh.jpg" alt="Jagadeesh">
+      <h3>Jagadeesh</h3>
+      <p>as Kesava</p>
+    </div>
+    <div class="cast-card" onclick="openModal('Sunil')">
+      <img src="sunil.jpg" alt="Sunil">
+      <h3>Sunil</h3>
+      <p>as Mangalam Sinu</p>
+    </div>
+    <div class="cast-card" onclick="openModal('Anasuya Bharadwaj')">
+      <img src="anasuya.avif" alt="Anasuya Bharadwaj">
+      <h3>Anasuya Bharadwaj</h3>
+      <p>as Dakshayani</p>
+    </div>
+    <div class="cast-card" onclick="openModal('Rao Ramesh')">
+      <img src="naidu.avif" alt="Rao Ramesh">
+      <h3>Rao Ramesh</h3>
+      <p>as Siddappa Naidu</p>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="castModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+  <script>
+    const castInfo = {
+      "Allu Arjun": "Allu Arjun plays Pushpa Raj, a red sandalwood smuggler. He is known for his action and charisma.",
+      "Rashmika Mandanna": "She portrays Srivalli, Pushpa’s love interest with a strong emotional arc.",
+      "Fahadh Faasil": "He plays IPS officer Bhanwar Singh, a ruthless and cunning adversary.",
+      "Sukumar": "Director and writer of Pushpa. His storytelling is intense and raw.",
+      "Jagadeesh": "Plays Kesava, Pushpa’s close friend and trusted ally.",
+      "Sunil": "Portrays Mangalam Sinu, an antagonist with a powerful local presence.",
+      "Anasuya Bharadwaj": "Plays Dakshayani, a fearless and bold woman involved in smuggling.",
+      "Rao Ramesh": "Plays Siddappa Naidu, a politician with strong influence in the story."
+    };
+
+    function openModal(name) {
+      document.getElementById('modalTitle').innerText = name;
+      document.getElementById('modalText').innerText = castInfo[name] || "Details coming soon...";
+      document.getElementById('castModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('castModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

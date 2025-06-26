@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Booking</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-image: url('hotel.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+    }
+
+    /* Logo Styling */
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: rgb(203, 191, 21);
+      padding: 5px 15px;
+      border: 2px solid white;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    /* Navigation Bar */
+    header {
+      background-color: black;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #f06292;
+      color: white;
+      border-radius: 5px;
+    }
+
+      
+  
+    /* Main content */
+    
+    
+    .main-content {
+      position: relative;
+      height: 100vh;
+      background-image: url('hotelbg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .booking-form {
+      background-color: white;
+      color: #333;
+      padding: 20px;
+      border-radius: 5px;
+      width: 300px;
+      margin-right: 100px;
+    }
+
+    .booking-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .booking-form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .booking-form input, .booking-form select, .booking-form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .booking-form button {
+      background-color: #f06292;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* Chatbot Styles */
+    #chatbot-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #f06292;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    #chatbot-container {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 350px;
+      height: 500px;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      display: none;
+      flex-direction: column;
+    }
+
+    #chatbot-header {
+      background-color: #f06292;
+      color: white;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 10px 10px 0 0;
+    }
+
+    #chatbot-messages {
+      flex-grow: 1;
+      padding: 15px;
+      overflow-y: auto;
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* Hotel Location */
+    .hotel-location {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .hotel-location iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <style>
+    
+  </style>
+
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Grand Hotel</div>
+    <nav>
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="food.html">Menu</a></li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="faci.html">Facilities</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Booking Form -->
+  <div class="main-content">
+    <div class="booking-form">
+      <h2>Book Your Hotel</h2>
+      <label>Name:</label>
+      <input type="text" id="name" required>
+      <label>Phone Number:</label>
+      <input type="text" id="phone" required>
+      <label>Email:</label>
+      <input type="email" id="email" required>
+      <label>Check-in:</label>
+      <input type="date" id="checkin" required>
+      <label>Check-out:</label>
+      <input type="date" id="checkout" required>
+      <label>Guests:</label>
+      <select id="guests">
+        <option value="1">1 Adults</option>
+        <option value="2">2 Adults + 3 childrens</option>
+        <option value="2">3 Adults + 2 childrens</option>
+        <option value="2">2 Adults+  2 childrens</option>
+      </select>
+      <label>Room Type:</label>
+      <select id="rooms">
+        <option value="Deluxe Room">Deluxe Room - ₹5,000/night</option>
+        <option value="Suite Room">Suite Room - ₹9,000/night</option>
+        <option value="Single Room">Single Room - ₹2,000/night</option>
+        <option value="Beach view">Beach view - ₹2,000/night</option>
+        
+      </select>
+      <label>Food Preferences:</label>
+      <textarea id="food"></textarea>
+      <button onclick="sendEmail()">Book Now</button>
+    </div>
+  </div>
+
+    <!-- Chatbot -->
+    <button id="chatbot-btn" onclick="toggleChatbot()">💬</button>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("6-iY3gzwBUDG4-UHf");
+        })();
+  
+        function sendEmail() {
+            const bookingData = {
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                email: document.getElementById("email").value,
+                checkin: document.getElementById("checkin").value,
+                checkout: document.getElementById("checkout").value,
+                guests: document.getElementById("guests").value,
+                rooms: document.getElementById("rooms").value,
+                food: document.getElementById("food").value
+            };
+            
+            emailjs.send("service_ko8kqvp", "template_9f7n69w", bookingData)
+                .then(function(response) {
+                    console.log("Email sent successfully!", response);
+                    alert("Booking details sent successfully!");
+                })
+                .catch(function(error) {
+                    console.error("Failed to send email", error);
+                    alert("Failed to send booking details. Please try again.");
+                });
+  
+            fetch("http://localhost:3000/book-hotel", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(bookingData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Booking Confirmed! Email Sent.");
+                    window.location.href = "payment.html";
+                } else {
+                    alert("Error: " + data.error);
+                }
+            })
+            .catch(error => {
+                console.error("Failed to process booking", error);
+                alert("Failed to process booking.");
+            });
+        }
+    </script>
+  
+  <!-- Chatbot -->
+<button id="chatbot-btn" onclick="toggleChatbot()">💬</button>
+<div id="chatbox" style="display: none; position: fixed; bottom: 50px; right: 20px; width: 300px; background: white; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+  <div style="background: #f06292; color: white; padding: 10px; text-align: center; font-weight: bold; cursor: pointer;" onclick="toggleChatbot()">AI Chat</div>
+  <div id="chat-content" style="padding: 10px; height: 300px; overflow-y: auto;"></div>
+  <input type="text" id="chat-input" placeholder="Type your message..." style="width: 100%; padding: 10px; border: none; border-top: 1px solid #ccc;" onkeypress="handleChat(event)">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("6-iY3gzwBUDG4-UHf");
+  })();
+
+  function toggleChatbot() {
+    const chatbox = document.getElementById("chatbox");
+    chatbox.style.display = chatbox.style.display === "none" ? "block" : "none";
+  }
+
+  function handleChat(event) {
+    if (event.key === "Enter") {
+      const input = document.getElementById("chat-input");
+      const message = input.value.trim();
+      if (message) {
+        displayMessage("You: " + message, "user");
+        input.value = "";
+        setTimeout(() => aiResponse(message), 1000);
+      }
+    }
+  }
+
+  function displayMessage(text, sender) {
+    const chatContent = document.getElementById("chat-content");
+    const messageDiv = document.createElement("div");
+    messageDiv.textContent = text;
+    messageDiv.style.padding = "5px";
+    messageDiv.style.margin = "5px 0";
+    messageDiv.style.background = sender === "user" ? "#f0f0f0" : "#f06292";
+    messageDiv.style.color = sender === "user" ? "black" : "white";
+    messageDiv.style.borderRadius = "5px";
+    messageDiv.style.textAlign = sender === "user" ? "right" : "left";
+    chatContent.appendChild(messageDiv);
+    chatContent.scrollTop = chatContent.scrollHeight;
+  }
+
+  function aiResponse(message) {
+    let response = "I'm here to assist you. How can I help?";
+    if (message.toLowerCase().includes("book")) {
+      response = "Would you like to book a room? Please provide check-in and check-out dates.";
+    } else if (message.toLowerCase().includes("menu")) {
+      response = "Our menu includes a variety of delicious meals. Would you like recommendations?";
+    } else if (message.toLowerCase().includes("room")) {
+      response = "We have Deluxe, Suite, Family, and Single rooms available. Which one are you interested in?";
+    }
+    displayMessage("AI: " + response, "ai");
+  }
+
+  function sendEmail() {
+    const bookingData = {
+      name: document.getElementById("name").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value,
+      checkin: document.getElementById("checkin").value,
+      checkout: document.getElementById("checkout").value,
+      guests: document.getElementById("guests").value,
+      rooms: document.getElementById("rooms").value,
+      food: document.getElementById("food").value
+    };
+    
+    const params = {
+      name: bookingData.name,
+      phone: bookingData.phone,
+      email: bookingData.email,
+      checkin: bookingData.checkin,
+      checkout: bookingData.checkout,
+      guests: bookingData.guests,
+      rooms: bookingData.rooms,
+      food: bookingData.food
+    };
+    
+    emailjs.send("service_ko8kqvp", "template_9f7n69w", params)
+      .then(function(response) {
+        alert("Booking details sent successfully!");
+        window.location.href = "payment.html";
+      }, function(error) {
+        alert("Failed to send booking details. Please try again.");
+      });
+    
+    fetch("http://localhost:3000/book-hotel", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bookingData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert("Booking Confirmed! Email Sent.");
+        window.location.href = "payment.html";
+      } else {
+        alert("Error: " + data.error);
+      }
+    })
+    .catch(error => alert("Failed to process booking."));
+  }
+</script>
+<!-- Live Location Map -->
+<div class="map-container" style="text-align: center; margin-top: 50px;">
+  <h2>Find Your Live Location</h2>
+  <p>Your current location will be displayed on the map.</p>
+  <iframe 
+    id="live-map" 
+    width="600" 
+    height="350" 
+    style="border:0; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" 
+    allowfullscreen 
+    loading="lazy">
+  </iframe>
+</div>
+
+<script>
+  function showLiveLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          const mapSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d${longitude}!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z${latitude},${longitude}!5e0!3m2!1sen!2sus!4v1645248907864`;
+          document.getElementById("live-map").src = mapSrc;
+        },
+        (error) => {
+          alert("Geolocation is not enabled or allowed.");
+        }
+      );
+    } else {
+      alert("Geolocation is not supported by your browser.");
+    }
+  }
+
+  // Call function when page loads
+  window.onload = showLiveLocation;
+</script>
+
+</div>
+
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pomegranate - Product Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .product-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .product-details img {
+      max-width: 400px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .info h2 {
+      margin-top: 0;
+    }
+
+    .price {
+      color: green;
+      font-size: 22px;
+      margin: 10px 0;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 10px 10px 10px 0;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    .upi-form {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .upi-form input {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .share {
+      text-align: right;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .share a {
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    .reviews {
+      margin-top: 30px;
+    }
+
+    .reviews p {
+      margin: 5px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    td, th {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .order-status {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e0ffe0;
+      border: 2px solid #4CAF50;
+      border-radius: 8px;
+      color: green;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="share">
+    Share:
+    <a href="https://wa.me/?text=Check%20out%20this%20amazing%20pomegranate%20product!%20https://yourwebsite.com/pomegranate-product.html" target="_blank">🔗 WhatsApp</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com/pomegranate-product.html" target="_blank">📘 Facebook</a>
+    <a href="mailto:?subject=Check%20out%20this%20product&body=Here%20is%20a%20great%20pomegranate%20you%20might%20like:%20https://yourwebsite.com/pomegranate-product.html" target="_blank">📧 Email</a>
+  </div>
+
+  <div class="product-details">
+    <img id="productImage" src="pomo.webp" alt="Organic Pomegranate" />
+
+    <div class="info">
+      <h2>Organic Pomegranate</h2>
+      <p>Quality: Grade A+</p>
+      <p class="price">₹150/kg</p>
+      <p>Discount: 8% off</p>
+      <p>Available: Yes</p>
+
+      <button class="btn" onclick="showPayment()">Add to Cart</button>
+      <button class="btn" onclick="showPayment()">Buy Now</button>
+
+      <div class="upi-form" id="upiForm">
+        <h3>Enter Delivery & Payment Details</h3>
+        <input type="text" id="address" placeholder="Full Address" required />
+        <input type="text" id="upi" placeholder="UPI ID (e.g., yourname@upi)" required />
+        <input type="number" id="quantity" placeholder="Enter quantity (in kg)" required onchange="updateAmount()" />
+        <p id="totalAmount" style="font-weight: bold;">Total: ₹0</p>
+        <button class="btn" onclick="placeOrder()">Place Order</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-status" id="orderStatus">
+    ✅ Your order has been placed successfully!
+  </div>
+
+  <div class="reviews">
+    <h3>Product Details & Reviews</h3>
+    <p>🍎 Fresh, juicy pomegranates rich in antioxidants and vitamins.</p>
+    <p>⭐ 4.6/5 based on 75 reviews</p>
+    <p>"Sweet and flavorful seeds!" - Meera</p>
+    <p>"Best quality pomegranates I've bought." - Sanjay</p>
+  </div>
+
+  <h3>Product Specifications</h3>
+  <table>
+    <tr><th>Specification</th><th>Details</th></tr>
+    <tr><td>Product Name</td><td>Organic Pomegranate</td></tr>
+    <tr><td>Type</td><td>Fruit</td></tr>
+    <tr><td>Variety</td><td>Ganesh</td></tr>
+    <tr><td>Weight</td><td>Approx. 500 g (1 large pomegranate)</td></tr>
+    <tr><td>Origin</td><td>Maharashtra, India</td></tr>
+    <tr><td>Farming Type</td><td>100% Organic (No pesticides)</td></tr>
+    <tr><td>Shelf Life</td><td>7–10 days (refrigerated)</td></tr>
+    <tr><td>Packaging</td><td>Eco-friendly carton box</td></tr>
+    <tr><td>Storage Tips</td><td>Keep refrigerated for maximum freshness.</td></tr>
+  </table>
+
+  <h3>Nutritional Information (per 100g)</h3>
+  <table>
+    <tr><th>Nutrient</th><th>Amount</th></tr>
+    <tr><td>Calories</td><td>83 kcal</td></tr>
+    <tr><td>Carbohydrates</td><td>19 g</td></tr>
+    <tr><td>Sugars</td><td>14 g</td></tr>
+    <tr><td>Dietary Fiber</td><td>4 g</td></tr>
+    <tr><td>Protein</td><td>1.7 g</td></tr>
+    <tr><td>Fat</td><td>1.2 g</td></tr>
+    <tr><td>Vitamin C</td><td>10.2 mg (11% DV)</td></tr>
+  </table>
+</div>
+
+<!-- Modal for large image -->
+<div id="imageModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:999;">
+  <span style="position:absolute; top:20px; right:30px; font-size:40px; color:white; cursor:pointer;" onclick="closeModal()">&times;</span>
+  <img id="modalImg" style="max-width:90%; max-height:90vh; border-radius:10px;">
+</div>
+
+<script>
+  const img = document.getElementById("productImage");
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+
+  img.onclick = function () {
+    modal.style.display = "flex";
+    modalImg.src = this.src;
+  };
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  function showPayment() {
+    document.getElementById("upiForm").style.display = "block";
+    document.getElementById("orderStatus").style.display = "none";
+  }
+
+  function updateAmount() {
+    const qty = document.getElementById("quantity").value;
+    const total = qty * 150;
+    document.getElementById("totalAmount").textContent = "Total: ₹" + total;
+  }
+
+  function placeOrder() {
+    const address = document.getElementById("address").value.trim();
+    const upi = document.getElementById("upi").value.trim();
+    const qty = document.getElementById("quantity").value;
+
+    if (address === "" || upi === "" || qty === "") {
+      alert("❗ Please fill all fields.");
+      return;
+    }
+
+    document.getElementById("orderStatus").style.display = "block";
+    document.getElementById("upiForm").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

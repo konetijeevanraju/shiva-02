@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wheat - Product Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .product-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .image-gallery {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .image-gallery img {
+      max-width: 300px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .info h2 {
+      margin-top: 0;
+    }
+
+    .price {
+      color: green;
+      font-size: 22px;
+      margin: 10px 0;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    .reviews, .specs, .nutrition {
+      margin-top: 30px;
+    }
+
+    .reviews p, .nutrition table td, .specs table td {
+      margin: 5px 0;
+      font-size: 15px;
+    }
+
+    .rating-box {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .stars {
+      font-size: 30px;
+      cursor: pointer;
+      color: #ccc;
+    }
+
+    .stars.selected,
+    .stars.hovered {
+      color: gold;
+    }
+
+    .floating-cart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 50px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      font-size: 14px;
+    }
+
+    .floating-cart button {
+      padding: 4px 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .floating-cart .btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .floating-cart .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="product-details">
+      <div class="image-gallery">
+        <img id="productImage" src="wheat.webp" alt="Organic Wheat">
+      </div>
+
+      <div class="info">
+        <h2>Organic Wheat</h2>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹35/kg</p>
+        <p>Discount: 7% off</p>
+        <p>Available: Yes</p>
+      </div>
+    </div>
+
+    <div class="reviews">
+      <h3>Product Details & Reviews</h3>
+      <p>🌾 Pure, naturally grown, pesticide-free organic wheat grains.</p>
+      <p>⭐ 4.7/5 based on 150 reviews</p>
+      <p>"Very clean and healthy grains!" - Sunita</p>
+      <p>"Makes soft rotis and chapatis." - Ajay</p>
+    </div>
+
+    <div class="rating-box">
+      <h3>Rate this Product</h3>
+      <div id="star-container">
+        <span class="stars" data-value="1">★</span>
+        <span class="stars" data-value="2">★</span>
+        <span class="stars" data-value="3">★</span>
+        <span class="stars" data-value="4">★</span>
+        <span class="stars" data-value="5">★</span>
+      </div>
+      <div class="result" id="rating-result">Click to rate</div>
+    </div>
+
+    <div class="specs">
+      <h3>Product Specifications</h3>
+      <table>
+        <tr><td><strong>Product Name</strong></td><td>Organic Wheat</td></tr>
+        <tr><td><strong>Type</strong></td><td>Grain</td></tr>
+        <tr><td><strong>Variety</strong></td><td>Lokwan / Sharbati</td></tr>
+        <tr><td><strong>Weight</strong></td><td>1 kg</td></tr>
+        <tr><td><strong>Origin</strong></td><td>Punjab, India</td></tr>
+        <tr><td><strong>Farming Type</strong></td><td>100% Organic (No pesticides)</td></tr>
+        <tr><td><strong>Shelf Life</strong></td><td>6–9 months</td></tr>
+        <tr><td><strong>Packaging</strong></td><td>Eco-friendly jute bag</td></tr>
+        <tr><td><strong>Storage Tips</strong></td><td>Store in airtight container in a cool, dry place</td></tr>
+      </table>
+    </div>
+
+    <div class="nutrition">
+      <h3>Nutritional Information (per 100g)</h3>
+      <table>
+        <tr><td><strong>Calories</strong></td><td>340 kcal</td></tr>
+        <tr><td><strong>Carbohydrates</strong></td><td>72 g</td></tr>
+        <tr><td><strong>Sugars</strong></td><td>0.4 g</td></tr>
+        <tr><td><strong>Dietary Fiber</strong></td><td>12.2 g</td></tr>
+        <tr><td><strong>Protein</strong></td><td>13.2 g</td></tr>
+        <tr><td><strong>Total Fat</strong></td><td>2.5 g</td></tr>
+        <tr><td><strong>Iron</strong></td><td>3.6 mg (20% DV)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ✅ Floating Cart -->
+  <div class="floating-cart">
+    🛒 <span>Add</span>
+    <button onclick="decreaseQty('Organic Wheat')">−</button>
+    <span id="bottomQty">0</span>
+    <button onclick="increaseQty('Organic Wheat')">+</button>
+    <span id="bottomTotal">₹0</span>
+    <button class="btn" onclick="addToCart()">Buy</button>
+  </div>
+
+  <script>
+    const cart = {
+      "Organic Wheat": {
+        price: 35,
+        quantity: 0
+      }
+    };
+
+    function increaseQty(item) {
+      cart[item].quantity++;
+      updateCartUI();
+    }
+
+    function decreaseQty(item) {
+      if (cart[item].quantity > 0) {
+        cart[item].quantity--;
+        updateCartUI();
+      }
+    }
+
+    function addToCart() {
+      const qty = cart["Organic Wheat"].quantity;
+      if (qty === 0) {
+        alert("Please add at least 1 kg.");
+      } else {
+        alert(`Added ${qty} kg to cart. Total: ₹${qty * cart["Organic Wheat"].price}`);
+      }
+    }
+
+    function updateCartUI() {
+      const qty = cart["Organic Wheat"].quantity;
+      const total = qty * cart["Organic Wheat"].price;
+      document.getElementById("bottomQty").textContent = qty;
+      document.getElementById("bottomTotal").textContent = `₹${total}`;
+    }
+
+    // Star Rating Script
+    const stars = document.querySelectorAll('.stars');
+    const result = document.getElementById('rating-result');
+    let selectedRating = 0;
+
+    stars.forEach((star, index) => {
+      star.addEventListener('mouseover', () => {
+        resetStars();
+        highlightStars(index);
+      });
+      star.addEventListener('mouseout', () => {
+        resetStars();
+        highlightStars(selectedRating - 1);
+      });
+      star.addEventListener('click', () => {
+        selectedRating = index + 1;
+        result.textContent = `You rated: ${selectedRating} star${selectedRating > 1 ? 's' : ''}`;
+        highlightStars(index);
+      });
+    });
+
+    function highlightStars(index) {
+      for (let i = 0; i <= index; i++) {
+        stars[i].classList.add('selected');
+      }
+    }
+
+    function resetStars() {
+      stars.forEach(star => {
+        star.classList.remove('selected');
+      });
+    }
+  </script>
+
+</body>
+</html>

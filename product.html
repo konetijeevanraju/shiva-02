@@ -1,0 +1,80 @@
+<style>
+  .product-row {
+    display: flex;
+    gap: 20px; /* gap between each product */
+    flex-wrap: nowrap; /* keep in a row, use wrap if needed */
+  }
+  .product-card {
+    width: 180px; /* smaller width */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  .product-image img {
+    width: 100%;
+    height: 140px; /* smaller height */
+    object-fit: cover;
+  }
+  .product-info {
+    padding: 8px;
+  }
+  .product-info h3 {
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+  }
+  .product-info p {
+    margin: 2px 0;
+    font-size: 0.85rem;
+  }
+  .price {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  .add-to-cart {
+    width: 100%;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 0 0 5px 5px;
+  }
+  .add-to-cart:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<div class="product-row">
+  <div class="product-card">
+    <a href="tomato.html" style="text-decoration: none; color: inherit; display: block;">
+      <div class="product-image">
+        <img src="tomatoes 1.webp" alt="Tomato">
+      </div>
+      <div class="product-info">
+        <h3>Organic Tomatoes</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹40/kg</p>
+      </div>
+    </a>
+    <button class="add-to-cart" onclick="addToCart('Organic Tomatoes', 40)">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="spinach.html" style="text-decoration: none; color: inherit; display: block;">
+      <div class="product-image">
+        <img src="Spinach.webp" alt="Spinach">
+      </div>
+      <div class="product-info">
+        <h3>Organic Spinach</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹25/bundle</p>
+      </div>
+    </a>
+    <button class="add-to-cart" onclick="addToCart('Organic Spinach', 25)">Add to Cart</button>
+  </div>
+
+  <!-- Add other product cards similarly -->
+</div>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Green Harvest - Products</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .scroll-section {
+      position: relative;
+      margin-bottom: 60px;
+    }
+
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .product-card {
+      width: 250px;
+      flex: 0 0 auto;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-info h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .product-info p {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .price {
+      font-size: 18px;
+      color: green;
+      font-weight: bold;
+    }
+
+    .add-to-cart {
+      margin: 10px 15px 15px;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .arrow-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .arrow-left { left: 10px; }
+    .arrow-right { right: 10px; }
+
+    /* Cart panel */
+    #cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 250px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      padding: 15px;
+      z-index: 100;
+    }
+
+    #cart h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    #cart ul {
+      list-style: none;
+      padding: 0;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    #cart ul li {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    #cart-total {
+      font-weight: bold;
+      margin-top: 10px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Our Organic Products</h1>
+
+  <!-- Cart Panel -->
+  <div id="cart">
+    <h3>🛒 Cart</h3>
+    <ul id="cart-items"></ul>
+    <p id="cart-total">Total: ₹0</p>
+  </div>
+
+  <!-- Vegetables Row -->
+  <h2>Vegetables</h2>
+  <div class="scroll-section">
+    <button class="arrow-button arrow-left" onclick="scrollLeft('vegetable-row')">←</button>
+    <div class="scroll-container" id="vegetable-row">
+
+      <!-- Carrot -->
+<div style="width: 250px;">
+  <a href="carrot.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="carrot.jpg" alt="Carrot" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Organic Carrots</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹40/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Organic Carrots', 40)">Add to Cart</button>
+</div>
+
+
+
+<div style="width: 250px;">
+  <a href="tomato.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="tomatoes 1.webp" alt="Tomato" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Organic Tomatoes</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹40/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Organic Tomatoes', 40)">Add to Cart</button>
+</div>
+
+
+
+      <div style="width: 250px;">
+  <a href="spinach.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="Spinach.webp" alt="Spinach" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Organic Spinach</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹25/bundle</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Organic Spinach', 25)">Add to Cart</button>
+</div>
+
+
+     <div style="width: 250px;">
+  <a href="radish.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="radish.jpg" alt="Radish" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Organic Radish</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹30/bundle</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Organic Radish', 30)">Add to Cart</button>
+</div>
+<!-- Garlic -->
+<div style="width: 250px;">
+  <a href="garlic.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="garlic.jpg" alt="Garlic" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Garlic</h3>
+        <p>Quality: Grade A</p>
+        <p class="price">₹90/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Garlic', 90)">Add to Cart</button>
+</div>
+
+<!-- Beetroot -->
+<div style="width: 250px;">
+  <a href="beetroot.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="beetroot.png" alt="Beetroot" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Beetroot</h3>
+        <p>Quality: Grade A</p>
+        <p class="price">₹45/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Beetroot', 45)">Add to Cart</button>
+</div>
+
+<div style="width: 250px;">
+  <a href="potato.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="potato.webp" alt="Potato" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Organic Potatoes</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹35/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Organic Potatoes', 35)">Add to Cart</button>
+</div>
+
+<div style="width: 250px;">
+  <a href="onion.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="onion.jpeg" alt="Onion" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Organic Onions</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹30/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Organic Onions', 30)">Add to Cart</button>
+</div>
+
+
+    </div>
+    <button class="arrow-button arrow-right" onclick="scrollRight('vegetable-row')">→</button>
+  </div>
+
+  <!-- Fruits Row -->
+  <h2>Fruits</h2>
+  <div class="scroll-section">
+    <button class="arrow-button arrow-left" onclick="scrollLeft('fruit-row')">←</button>
+    <div class="scroll-container" id="fruit-row">
+<div style="width: 250px; margin-bottom: 20px;">
+  <a href="lemon.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="lemon.jpg" alt="Lemon" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Lemons</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹60/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Lemons', 60)">Add to Cart</button>
+</div>
+
+<!-- Watermelon -->
+<div style="width: 250px;">
+  <a href="watermelon.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="melo.jpg" alt="Watermelon" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Watermelon</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹25/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Watermelon', 25)">Add to Cart</button>
+</div>
+
+<!-- Orange -->
+<div style="width: 250px;">
+  <a href="orange.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="orange.jpg" alt="Orange" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Juicy Oranges</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹60/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Juicy Oranges', 60)">Add to Cart</button>
+</div>
+
+<!-- Grapes -->
+<div style="width: 250px;">
+  <a href="grapes.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="grapes.jpg" alt="Grapes" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Grapes</h3>
+        <p>Quality: Grade A</p>
+        <p class="price">₹80/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Grapes', 80)">Add to Cart</button>
+</div>
+
+
+<!-- Banana -->
+<div style="width: 250px; margin-bottom: 20px;">
+  <a href="banana.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="banana.jpeg" alt="Banana" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Bananas</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹50/dozen</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Bananas', 50)">Add to Cart</button>
+</div>
+
+<!-- Apple -->
+<div style="width: 250px; margin-bottom: 20px;">
+  <a href="apple.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="apple.webp" alt="Apple" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Apples</h3>
+        <p>Quality: Grade A</p>
+        <p class="price">₹100/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Apples', 100)">Add to Cart</button>
+</div>
+
+<!-- Pomegranate -->
+<div style="width: 250px; margin-bottom: 20px;">
+  <a href="pomegranate.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="pomo.webp" alt="Pomegranate" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Pomegranates</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹120/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Pomegranates', 120)">Add to Cart</button>
+</div>
+
+<div style="width: 250px; margin-bottom: 20px;">
+  <a href="strawberry.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="straw.jpg" alt="Strawberry" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Strawberries</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹150/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Strawberries', 150)">Add to Cart</button>
+</div>
+      <!-- Add more fruit products here -->
+
+    </div>
+    <button class="arrow-button arrow-right" onclick="scrollRight('fruit-row')">→</button>
+  </div>
+
+
+<!-- Grains and Cereals -->
+  <h2>Grains and Cereals</h2>
+<div class="scroll-section">
+  <button class="arrow-button arrow-left" onclick="scrollLeft('grains-row')">←</button>
+  <div class="scroll-container" id="grains-row">
+<!--wheat-->
+ <div style="width: 250px; margin-bottom: 20px;">
+  <a href="wheat.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="wheat.webp" alt="Organic Wheat" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Organic Wheat</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹60/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Organic Wheat', 60)">Add to Cart</button>
+</div>
+<!----corn-->
+<div style="width: 250px; margin-bottom: 20px;">
+  <a href="" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="corn.jpg" alt="Organic Corn" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Organic Corn</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹55/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Organic Corn', 55)">Add to Cart</button>
+</div>
+<!---rice-->
+<div style="width: 250px; margin-bottom: 20px;">
+  <a href="rice.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="rice.jpeg" alt="Organic Rice" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Organic Rice</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹70/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Organic Rice', 70)">Add to Cart</button>
+</div>
+
+<!-- Millet -->
+<div style="width: 250px; margin-bottom: 20px;">
+  <a href="millet.html" style="text-decoration: none; color: inherit; display: block;">
+    <div class="product-card" style="margin-bottom: 0;">
+      <div class="product-image">
+        <img src="millet.webp" alt="Millet" style="width: 100%; height: 200px; object-fit: cover;">
+      </div>
+      <div class="product-info">
+        <h3>Fresh Millet</h3>
+        <p>Quality: Grade A+</p>
+        <p class="price">₹50/kg</p>
+      </div>
+    </div>
+  </a>
+  <button class="add-to-cart" style="width: 100%; margin-top: 10px;" onclick="addToCart('Fresh Millet', 50)">Add to Cart</button>
+</div>
+
+
+<script>
+  const cartItems = [];
+let total = 0;
+
+function addToCart(name, price) {
+  cartItems.push({ name, price });
+  total += price;
+  renderCart();
+}
+
+function renderCart() {
+  const list = document.getElementById('cart-items');
+  list.innerHTML = '';
+  cartItems.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.textContent = `${item.name} - ₹${item.price}`;
+    list.appendChild(li);
+  });
+  document.getElementById('cart-total').textContent = `Total: ₹${total}`;
+}
+
+</script>
+    
+<script>
+  
+
+    function scrollRight(id) {
+      document.getElementById(id).scrollLeft += 300;
+    }
+
+    function scrollLeft(id) {
+      document.getElementById(id).scrollLeft -= 300;
+    }
+
+    
+
+    function addToCart(name, price) {
+      cartItems.push({ name, price });
+      total += price;
+      renderCart();
+    }
+
+    function renderCart() {
+      const list = document.getElementById('cart-items');
+      list.innerHTML = '';
+      cartItems.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ₹${item.price}`;
+        list.appendChild(li);
+      });
+      document.getElementById('cart-total').textContent = `Total: ₹${total}`;
+    }
+</script>
+
+</body>
+</html>

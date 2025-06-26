@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pushpa Photos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1a1a2e, #16213e);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-center img {
+      height: 40px;
+    }
+
+    .navbar-center h1 {
+      font-size: 26px;
+      color: #FFD700;
+    }
+
+    .navbar-right {
+      margin-left: auto;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .navbar-right a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    .navbar-right a:hover {
+      color: #FFD700;
+    }
+
+    .gallery {
+      padding: 120px 20px 50px;
+      text-align: center;
+    }
+
+    .gallery h2 {
+      font-size: 36px;
+      color: #ffd700;
+      margin-bottom: 40px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.7);
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .popup img {
+      width: 800px;
+      max-width: 95%;
+      border-radius: 16px;
+      box-shadow: 0 0 60px 20px rgba(255, 215, 0, 0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    @media (max-width: 1000px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navbar-center {
+        position: static;
+        transform: none;
+        margin-top: 10px;
+      }
+
+      .navbar-right {
+        margin-left: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <!-- Center heading -->
+    <div class="navbar-center">
+      <img src="Screenshot 2025-06-12 094740.png" alt="Logo">
+      <h1>Pushpa Universe</h1>
+    </div>
+
+    <!-- Right side navigation -->
+    <div class="navbar-right">
+      <a href="index.html">Home</a>
+      <a href="video.html">Videos</a>
+      <a href="photo.html">Photos</a>
+      <a href="awards.html">Awards</a>
+      <a href="cast.html">Cast</a>
+      <a href="collection.html">Achievements</a>
+    </div>
+  </nav>
+
+  <!-- Gallery Section -->
+  <section class="gallery">
+    <h2>Movie Stills & Scenes</h2>
+    <div class="gallery-grid">
+      <img src="Screenshot 2025-06-11 212507.png" alt="Scene 1">
+      <img src="Screenshot 2025-06-11 212606.png" alt="Scene 2">
+      <img src="Screenshot 2025-06-11 212751.png" alt="Scene 3">
+      <img src="Screenshot 2025-06-11 212840.png" alt="Scene 4">
+      <img src="Screenshot 2025-06-11 213030.png" alt="Scene 5">
+      <img src="Screenshot 2025-06-11 213118.png" alt="Scene 6">
+      <img src="Screenshot 2025-06-11 213042.png" alt="Scene 7">
+      <img src="Screenshot 2025-06-11 213147.png" alt="Scene 8">
+      <img src="Screenshot 2025-06-11 213225.png" alt="Scene 9">
+      <img src="Screenshot 2025-06-11 213339.png" alt="Scene 10">
+      <img src="img 1.jpg" alt="Scene 11">
+      <img src="img 2.jpg" alt="Scene 12">
+      <img src="img 3.jpg" alt="Scene 13">
+      <img src="img 4.jpg" alt="Scene 14">
+      <img src="img 5.webp" alt="Scene 15">
+    </div>
+  </section>
+
+  <!-- Popup container -->
+  <div id="popup" class="popup" style="display: none;">
+    <img id="popup-img" src="" alt="Popup Image">
+  </div>
+
+  <script>
+    const popup = document.getElementById("popup");
+    const popupImg = document.getElementById("popup-img");
+
+    document.querySelectorAll(".gallery-grid img").forEach(img => {
+      img.addEventListener("click", () => {
+        popupImg.src = img.src;
+        popup.style.display = "flex";
+      });
+    });
+
+    popup.addEventListener("click", () => {
+      popup.style.display = "none";
+      popupImg.src = "";
+    });
+  </script>
+
+</body>
+</html>

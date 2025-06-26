@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pushpa 2: Collections & Achievements</title>
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .nav-left {
+      flex: 1;
+    }
+
+    .nav-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .nav-title img {
+      height: 40px;
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    .nav-title h1 {
+      font-size: 1.8rem;
+      color: #FFD700;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      list-style: none;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #FFD700;
+    }
+
+    .section {
+      padding: 100px 20px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #ffd700;
+      text-align: center;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .stat-item {
+      background: #111;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .stat-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
+    }
+
+    .stat-item h3 {
+      font-size: 22px;
+      color: #f39c12;
+      margin-bottom: 10px;
+    }
+
+    .stat-item p {
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .achievements ul {
+      list-style: square;
+      padding-left: 20px;
+      font-size: 18px;
+    }
+
+    .achievements ul li {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .nav-title h1 {
+        font-size: 1.4rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .section h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar with Centered Heading and Icon -->
+  <nav class="navbar">
+    <div class="nav-left"></div> <!-- Balancing Left -->
+    
+    <div class="nav-title">
+      <img src="Screenshot 2025-06-12 094740.png" alt="Pushpa Icon" />
+      <h1>Pushpa 2: Achievements</h1>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="video.html">Videos</a></li>
+      <li><a href="photo.html">Photos</a></li>
+      <li><a href="awards.html">Awards</a></li>
+      <li><a href="cast.html">Cast</a></li>
+      <li><a href="collection.html">Achievements</a></li>
+    </ul>
+  </nav>
+
+  <!-- Box Office Collections -->
+  <section class="section stats">
+    <h2>Box Office Collections</h2>
+    <div class="stat-item">
+      <h3>Budget</h3>
+      <p>₹500 Crore</p>
+    </div>
+    <div class="stat-item">
+      <h3>Worldwide Collection</h3>
+      <p>₹1,871 Crore</p>
+    </div>
+    <div class="stat-item">
+      <h3>Domestic (India)</h3>
+      <p>₹1,381 Crore</p>
+    </div>
+    <div class="stat-item">
+      <h3>Overseas</h3>
+      <p>₹268 Crore</p>
+    </div>
+    <div class="stat-item">
+      <h3>Hindi Version</h3>
+      <p>₹713 Crore</p>
+    </div>
+  </section>
+
+  <!-- Achievements List -->
+  <section class="section achievements">
+    <h2>Major Achievements</h2>
+    <ul>
+      <li>Fastest Indian film to reach ₹1,700 Crore worldwide.</li>
+      <li>Top 3 highest-grossing Indian films of all time.</li>
+      <li>Highest-grossing Telugu film in North India.</li>
+      <li>Released in IMAX, 4DX, D-Box, 3D formats.</li>
+      <li>Massive cultural impact with Pushpa style, dialogues & songs.</li>
+      <li>Allu Arjun’s performance praised globally.</li>
+    </ul>
+  </section>
+
+</body>
+</html>

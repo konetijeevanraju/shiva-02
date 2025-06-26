@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GreenFarmers - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+      background: #000;
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+    }
+
+    #farming-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #4CAF50;
+    }
+
+    .account-icon {
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .account-icon:hover {
+      color: #4CAF50;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      max-width: 90%;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 12px 24px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="home">
+    <video autoplay muted loop id="farming-video">
+      <source src="vecteezy_the-farmer-is-working-on-his-field-in-the-evening_3054771.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <nav class="navbar">
+      <div class="logo">🌱 GreenFarmers</div>
+      <div class="nav-container">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <!-- Removed Our Crops here -->
+          <li><a href="product..html">Product</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="account-icon" onclick="openModal()">
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <h1>Welcome to GreenFarmers</h1>
+      <p>Empowering sustainable farming for a greener tomorrow.</p>
+      <p>✅ Farmers earn the full value of their crops — no middlemen.</p>
+      <p>🧑‍🌾 Clean food. Clear source. Complete trust.</p>
+      <a href="about.html" class="btn">Learn More</a>
+    </div>
+  </header>
+
+  <!-- Modal for user profile -->
+  <div id="profileModal" class="modal" style="display:none;">
+    <div class="modal-content" style="background:#222; padding:20px; border-radius:8px; max-width: 400px; margin: auto; margin-top: 100px; color:white;">
+      <span class="close" onclick="closeModal()" style="cursor:pointer; float:right; font-size:24px;">&times;</span>
+      <h3>User Profile</h3>
+      <input type="text" id="name" placeholder="Full Name" required style="width: 100%; margin: 8px 0; padding: 8px;"/>
+      <input type="tel" id="mobile" placeholder="Mobile Number" required style="width: 100%; margin: 8px 0; padding: 8px;"/>
+      <input type="email" id="email" placeholder="Email Address" required style="width: 100%; margin: 8px 0; padding: 8px;"/>
+      <button onclick="submitForm()" style="background:#4CAF50; border:none; color:white; padding:10px 20px; cursor:pointer; border-radius:5px;">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('profileModal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('profileModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('profileModal')) {
+        closeModal();
+      }
+    };
+    function submitForm() {
+      // Your form submit logic here
+      alert("Form submitted!");
+      closeModal();
+    }
+  </script>
+</body>
+</html>

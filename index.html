@@ -23,7 +23,6 @@
       position: relative;
       height: 100vh;
       overflow: hidden;
-      color: white;
     }
 
     #farming-video {
@@ -40,28 +39,37 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 50px;
-      background: rgba(0, 0, 0, 0.5);
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.7);
       position: fixed;
       width: 100%;
       z-index: 1000;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
     }
 
     .nav-container {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 25px;
     }
 
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 30px;
+      gap: 25px;
     }
 
     .nav-links a {
@@ -75,7 +83,7 @@
     }
 
     .account-icon {
-      font-size: 28px;
+      font-size: 24px;
       color: white;
       cursor: pointer;
     }
@@ -94,13 +102,13 @@
     }
 
     .hero-content h1 {
-      font-size: 48px;
+      font-size: 40px;
       margin-bottom: 20px;
     }
 
     .hero-content p {
-      font-size: 20px;
-      margin-bottom: 30px;
+      font-size: 18px;
+      margin-bottom: 10px;
     }
 
     .btn {
@@ -118,6 +126,43 @@
     .btn:hover {
       background-color: #45a049;
     }
+
+    /* Mobile Styling */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-container {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 15px 20px;
+        border-radius: 8px;
+        width: 200px;
+      }
+
+      .nav-container.active {
+        display: flex;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
+
+      .hero-content h1 {
+        font-size: 28px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -126,14 +171,16 @@
       <source src="vecteezy_the-farmer-is-working-on-his-field-in-the-evening_3054771.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
+
+    <!-- Navigation -->
     <nav class="navbar">
       <div class="logo">🌱 GreenFarmers</div>
-      <div class="nav-container">
+      <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+      <div class="nav-container" id="navContainer">
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <!-- Removed Our Crops here -->
-          <li><a href="product..html">Product</a></li>
+          <li><a href="product.html">Product</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
         <div class="account-icon" onclick="openModal()">
@@ -141,6 +188,8 @@
         </div>
       </div>
     </nav>
+
+    <!-- Hero Content -->
     <div class="hero-content">
       <h1>Welcome to GreenFarmers</h1>
       <p>Empowering sustainable farming for a greener tomorrow.</p>
@@ -150,7 +199,7 @@
     </div>
   </header>
 
-  <!-- Modal for user profile -->
+  <!-- Modal -->
   <div id="profileModal" class="modal" style="display:none;">
     <div class="modal-content" style="background:#222; padding:20px; border-radius:8px; max-width: 400px; margin: auto; margin-top: 100px; color:white;">
       <span class="close" onclick="closeModal()" style="cursor:pointer; float:right; font-size:24px;">&times;</span>
@@ -174,11 +223,16 @@
         closeModal();
       }
     };
+
     function submitForm() {
-      // Your form submit logic here
       alert("Form submitted!");
       closeModal();
+    }
+
+    function toggleMenu() {
+      document.getElementById("navContainer").classList.toggle("active");
     }
   </script>
 </body>
 </html>
+
